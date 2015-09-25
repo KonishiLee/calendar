@@ -724,10 +724,10 @@
 
         '<ul class="dr-preset-list" style="display: none;">' +
           '<li class="dr-list-item" data-months="days">最近30天 <span class="dr-item-aside"></span></li>' +
-          '<li class="dr-list-item" data-months="1">最近1个月 <span class="dr-item-aside"></span></li>' +
-          '<li class="dr-list-item" data-months="3">最近3个月 <span class="dr-item-aside"></span></li>' +
-          '<li class="dr-list-item" data-months="6">最近6个月 <span class="dr-item-aside"></span></li>' +
-          '<li class="dr-list-item" data-months="12">去年 <span class="dr-item-aside"></span></li>' +
+          '<li class="dr-list-item" data-months="1">过去1个月 <span class="dr-item-aside"></span></li>' +
+          '<li class="dr-list-item" data-months="3">过去3个月 <span class="dr-item-aside"></span></li>' +
+          '<li class="dr-list-item" data-months="6">过去6个月 <span class="dr-item-aside"></span></li>' +
+          '<li class="dr-list-item" data-months="12">过去1年 <span class="dr-item-aside"></span></li>' +
           '<li class="dr-list-item" data-months="all">全部 <span class="dr-item-aside"></span></li>' +
         '</ul>' +
       '</div>');
