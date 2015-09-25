@@ -1,10 +1,11 @@
 {
-  "name": "BaremetricsCalendar",
-  "version": "1.0.4",
+  "name": "konishileecalendar",
+  "version": "1.0.0",
   "license": "MIT",
+  "main": "dev/js/Calendar.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Baremetrics/calendar.git"
+    "url": "https://github.com/KonishiLee/calendar.git"
   },
   "devDependencies": {
     "gulp": "^3.8.10",

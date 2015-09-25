@@ -1,0 +1,97 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.7.6
+3 info using node@v0.10.33
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/pj/Desktop/calendar',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/pj/.npm/konishilee-calendar/1.0.0/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/pj/.npm/konishilee-calendar/1.0.0/package.tgz',
+9 verbose tar pack   '/Users/pj/Desktop/calendar' ]
+10 verbose tarball /Users/pj/.npm/konishilee-calendar/1.0.0/package.tgz
+11 verbose folder /Users/pj/Desktop/calendar
+12 info prepublish konishilee-calendar@1.0.0
+13 verbose addLocalTarball adding from inside cache /Users/pj/.npm/konishilee-calendar/1.0.0/package.tgz
+14 silly cache afterAdd konishilee-calendar@1.0.0
+15 verbose afterAdd /Users/pj/.npm/konishilee-calendar/1.0.0/package/package.json not in flight; writing
+16 verbose afterAdd /Users/pj/.npm/konishilee-calendar/1.0.0/package/package.json written
+17 silly publish { name: 'konishilee-calendar',
+17 silly publish   version: '1.0.0',
+17 silly publish   license: 'MIT',
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'https://github.com/KonishiLee/calendar.git' },
+17 silly publish   devDependencies:
+17 silly publish    { gulp: '^3.8.10',
+17 silly publish      'gulp-autoprefixer': '^0.0.10',
+17 silly publish      'gulp-gh-pages': '^0.5.2',
+17 silly publish      'gulp-livereload': '^2.1.1',
+17 silly publish      'gulp-minify-css': '^0.3.8',
+17 silly publish      'gulp-newer': '^0.3.0',
+17 silly publish      'gulp-sass': '^0.7.3',
+17 silly publish      'gulp-uglify': '^1.0.1' },
+17 silly publish   readme: '# [Baremetrics](https://baremetrics.com/) Date Range Picker\n_[Baremetrics](https://baremetrics.com) provides one-click analytics & insights for Stripe. **[Get started today!](https://baremetrics.com)**_\n\n---\n\nThe Baremetrics date range picker is a simplified solution for selecting both date ranges and single dates all from a single calender view. There aren\'t a billion options but the code is pretty basic and modular so feel free to edit however to meet your own needs.\n\nDesign by [Chris Meeks](https://dribbble.com/ChrisMeeks)  \nCode by [Tyler van der Hoeven](https://github.com/tyvdh)\n\n[View a demo](http://baremetrics.github.io/calendar/)  \n[View in a live production app](https://demo.baremetrics.com/)\n\n![](http://tyler.link/bqs5/Screen%20Shot%202015-07-02%20at%201.29.07%20PM.png)\n![](http://tyler.link/br0F/Screen%20Shot%202015-07-02%20at%201.29.28%20PM.png)\n![](http://tyler.link/bqV5/Screen%20Shot%202015-07-02%20at%201.32.15%20PM.png)\n\n## Installing\n\nUsing the date picker is pretty simple, you\'ve just got to make a couple choices and include a couple settings.\nCreate a div with a `daterange` class and then either the `daterange--double` or `daterange--single` classname for targeting the specific calendar you\'d like to generate.\n\n```html\n<div class="daterange daterange--double"></div>\n<div class="daterange daterange--single"></div>\n```\n\nNext you\'ve just gotta create a `new Calendar` instance.\n\n```js\nnew Calendar({\n  element: $(\'.daterange--single\'),\n  current_date: \'June 15, 2015\'\n});\n\nnew Calendar({\n  element: $(\'.daterange--double\'),\n  earliest_date: \'January 1, 2000\',\n  latest_date: new Date(),\n  start_date: \'May 1, 2015\',\n  end_date: \'May 31, 2015\',\n  callback: function() {\n    var start = moment(this.start_date).format(\'ll\'),\n        end = moment(this.end_date).format(\'ll\');\n    \n    console.debug(\'Start Date: \'+ start +\'\\nEnd Date: \'+ end);\n  }\n});\n```\n\n### Base Calendar Params\n- element _\\*required_\n  - jQuery DOM object of the calendar div you\'re working on\n- earliest_date\n  - The earliest date to show in the calendar\n- latest_date\n  - The latest date to show in the calendar\n- callback\n  - A function for whenever a new date is saved\n  - Inside you have access to variables like `this.earliest_date`, `this.latest_date` and `this.current_date` for doing things with the new dates\n- format \n  - Object containing formatting strings for.. you guessed it.. formating your dates\n  ```js\n    format: {\n      input: \'MMMM D, YYYY\', // Format for the input fields\n      jump_month: \'MMMM\', // Format for the month switcher\n      jump_year: \'YYYY\' // Format for the year switcher\n    }\n  ```\n- days_array\n  - Array of the 7 strings you\'d like to represent your days in the calendar\n  ```js\n    days_array: [\'Su\',\'Mo\',\'Tu\',\'We\',\'Th\',\'Fr\',\'Sa\']\n  ```\n\n### Single Calendar Params\n- current_date\n  - The date to start the calendar on\n\n### Double Calendar Params\n- callback\n  - The double calendar includes access to `this.end_date` and `this.start_date`\n- start_date\n  - The date to start the selection on for the calendar\n- end_date\n  - The date to end the selection on for the calendar\n- format\n  - The double calendar adds the `preset` key to the format object for formatting the preset dates in the preset dropdown\n- same_day_range\n  - Allow a range selection of a single day\n\n---\n\n## Developing\n\nI\'ve included my signature gulpfile too so be sure and take a look at that as well.\n\n```bash\n$ cd <project directory>\n$ npm install\n$ gulp\n```\n\nI also use [pow](http://pow.cx/) and the [powder gem](https://github.com/Rodreegez/powder) to run my local dev environments but however you plan on wrangling that the gulpfile turns on a livereload server so as long as you have the files serving somehow any changes you make will show up instantly.\n\n## Dependencies\n- [jQuery](https://jquery.com/)\n- [MomentJS](http://momentjs.com/)\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: 'f2f39e9c7024b2825ccfc0a0dccea6d8de3fecac',
+17 silly publish   description: '_[Baremetrics](https://baremetrics.com) provides one-click analytics & insights for Stripe. **[Get started today!](https://baremetrics.com)**_',
+17 silly publish   bugs: { url: 'https://github.com/KonishiLee/calendar/issues' },
+17 silly publish   homepage: 'https://github.com/KonishiLee/calendar',
+17 silly publish   _id: 'konishilee-calendar@1.0.0',
+17 silly publish   scripts: {},
+17 silly publish   _shasum: '09f4d5255c7d456353463e47f6865542132eeb8e',
+17 silly publish   _from: '.' }
+18 silly mapToRegistry name konishilee-calendar
+19 silly mapToRegistry using default registry
+20 silly mapToRegistry registry https://registry.npmjs.org/
+21 silly mapToRegistry uri https://registry.npmjs.org/konishilee-calendar
+22 verbose publish registryBase https://registry.npmjs.org/
+23 silly publish uploading /Users/pj/.npm/konishilee-calendar/1.0.0/package.tgz
+24 verbose request uri https://registry.npmjs.org/konishilee-calendar
+25 verbose request sending authorization for write operation
+26 info attempt registry request try #1 at 16:50:44
+27 verbose request using bearer token for auth
+28 verbose request id 0eb4d66e0226bdb3
+29 http request PUT https://registry.npmjs.org/konishilee-calendar
+30 http 403 https://registry.npmjs.org/konishilee-calendar
+31 verbose headers { 'content-type': 'application/json',
+31 verbose headers   'cache-control': 'max-age=60',
+31 verbose headers   'content-length': '111',
+31 verbose headers   'accept-ranges': 'bytes',
+31 verbose headers   date: 'Thu, 24 Sep 2015 08:50:46 GMT',
+31 verbose headers   via: '1.1 varnish',
+31 verbose headers   connection: 'keep-alive',
+31 verbose headers   'x-served-by': 'cache-nrt6120-NRT',
+31 verbose headers   'x-cache': 'MISS',
+31 verbose headers   'x-cache-hits': '0',
+31 verbose headers   'x-timer': 'S1443084645.531377,VS0,VE1062' }
+32 verbose request invalidating /Users/pj/.npm/registry.npmjs.org/konishilee-calendar on PUT
+33 error publish Failed PUT 403
+34 verbose stack Error: You do not have permission to publish 'konishilee-calendar'. Are you logged in as the correct user? : konishilee-calendar
+34 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+34 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+34 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:360:22)
+34 verbose stack     at Request.emit (events.js:98:17)
+34 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1202:14)
+34 verbose stack     at Request.emit (events.js:117:20)
+34 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1150:12)
+34 verbose stack     at IncomingMessage.emit (events.js:117:20)
+34 verbose stack     at _stream_readable.js:943:16
+34 verbose stack     at process._tickCallback (node.js:419:13)
+35 verbose statusCode 403
+36 verbose pkgid konishilee-calendar
+37 verbose cwd /Users/pj/Desktop/calendar
+38 error Darwin 14.5.0
+39 error argv "node" "/usr/local/bin/npm" "publish"
+40 error node v0.10.33
+41 error npm  v2.7.6
+42 error code E403
+43 error You do not have permission to publish 'konishilee-calendar'. Are you logged in as the correct user? : konishilee-calendar
+44 error If you need help, you may report this error at:
+44 error     <https://github.com/npm/npm/issues>
+45 verbose exit [ 1, true ]
