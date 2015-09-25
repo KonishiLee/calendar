@@ -16,5 +16,17 @@
     "gulp-newer": "^0.3.0",
     "gulp-sass": "^0.7.3",
     "gulp-uglify": "^1.0.1"
-  }
+  },
+  "description": "_[Baremetrics](https://baremetrics.com) provides one-click analytics & insights for Stripe. **[Get started today!](https://baremetrics.com)**_",
+  "bugs": {
+    "url": "https://github.com/KonishiLee/calendar/issues"
+  },
+  "homepage": "https://github.com/KonishiLee/calendar",
+  "scripts": {
+    "test": "'konishileecalendar'"
+  },
+  "keywords": [
+    "calendar"
+  ],
+  "author": "KonishiLee"
 }
