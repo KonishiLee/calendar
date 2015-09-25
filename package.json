@@ -1,6 +1,6 @@
 {
   "name": "konishileecalendar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "main": "./k-calendar.js",
   "repository": {
